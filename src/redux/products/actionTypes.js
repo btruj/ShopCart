@@ -1,0 +1,3 @@
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const ADD_QUALITY = "ADD_QUALITY";
+export const REMOVE_QUALITY = "REMOVE_QUALITY";
