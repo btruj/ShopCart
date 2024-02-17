@@ -1,8 +1,8 @@
-import { ADD_PRODUCT, ADD_QUALITY, REMOVE_QUALITY } from "./actionTypes";
+import { ADD_PRODUCT, ADD_QUANITY, REMOVE_QUANITY } from "./actionTypes";
 import { initialState } from "./intialState"
 
 const nextId = (items) => {
-    return items.reducer((id, item) => Math.max(id, item.id), -1) + 1;
+    return items.reduce((id, item) => Math.max(id, item.id), -1) + 1;
 }
 
 const productReducer = (state = initialState, action) => {
@@ -16,24 +16,24 @@ switch (action.type) {
                 quantity: parseInt(action.payload.quantity)
             }
         ]
-    case ADD_QUALITY:
+    case ADD_QUANITY:
             return state.map((product) => {
               if(product.id === action.payload.productId){
                 return {
                     ...product, 
-                    quantity: product.quantity + action.payload.quantity
+                    quantity: product.quantity + action.payload.quantity,
                 }
               } else {
                 return product;
               }
             });
             
-            case REMOVE_QUALITY:
+            case REMOVE_QUANITY:
                 return state.map((product) => {
                   if(product.id === action.payload){
                     return {
                         ...product, 
-                        quantity: product.quantity - 1
+                        quantity: product.quantity - 1,
                     }
                   } else {
                     return product;

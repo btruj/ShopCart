@@ -5,9 +5,7 @@ import Page from './components/Page'
 import store from './redux/store'
 
 function App() {
-  
-
-  return (
+    return (
     <Provider store={store}>
      <Navbar/>
      <Page/>

@@ -1,17 +1,19 @@
 import { useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
+import { addProduct } from "../redux/products/action"
 
 const AddProduct = () => {
     const dispatch = useDispatch()
     const {
         register,
         handleSubmit,
-        watch,
+        reset,
         formState: { errors },
       } = useForm()
 
       const onSubmit = (data) => {
-        console.log(data)
+       dispatch(addProduct(data));
+       reset();
     }
   return (
     <div className='fromContainer'>
@@ -40,6 +42,14 @@ const AddProduct = () => {
             <input {...register("imgUrl", { required: true})} type='text' className='addProductInput' />
             {errors.imgUrl && <span>This field is required</span>}
             </div>
+            
+            {/* Description */}
+            <div className='space-y-2'>
+            <label>Description</label>
+            <input {...register("description", { required: true})} placeholder="" type='text' className='addProductInput' />
+            {errors.imgUrl && <span>This field is required</span>}
+            </div>
+
             {/* price & quantity */}
             <div className='grid grid-cols-2 gap-8 pb-4'>
             <div className='space-y-2'>
