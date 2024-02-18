@@ -26,7 +26,7 @@ const ProductItem = ({product}) => {
         <p className='text-left'>${price}</p>
     </div>
     <div className="card-actions mt-2">
-      <button className="btn btn-sm btn-primary text-white" onClick={handleAddToCart}>Add to Cart</button>
+      <button className="btn btn-sm btn-primary text-white" disabled={quantity === 0} onClick={handleAddToCart}>Add to Cart</button>
     </div>
   </div>
 </div>
